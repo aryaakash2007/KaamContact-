@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kaamcontact| Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #25D366;
+    --dark-green: #128C7E;
+    --light-green: #dcf8c6;
+    --orange: #FF6B2B;
+    --bg: #f0f4f0;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --muted: #666;
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+  }
+
+  .logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .logo span { color: var(--light-green); }
+
+  nav { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  nav button {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    color: white;
+    padding: 7px 14px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  nav button:hover, nav button.active {
+    background: white;
+    color: var(--dark-green);
+  }
+
+  /* ── PAGES ── */
+  .page { display: none; padding: 20px; max-width: 900px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--dark-green), var(--green));
+    color: white;
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .hero p { opacity: 0.9; font-size: 15px; }
+
+  .stats {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .stat strong { display: block; font-size: 22px; font-family: 'Baloo 2', cursive; }
+  .stat span { font-size: 12px; opacity: 0.85; }
+
+  /* ── SERVICE CARDS ── */
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 14px;
+    color: var(--dark-green);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .service-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+    border-color: var(--green);
+  }
+
+  .service-card .icon-wrap {
+    background: linear-gradient(135deg, var(--light-green), #b7f5d0);
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+  .service-card .card-body { padding: 12px; text-align: center; }
+  .service-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .service-card .price { color: var(--orange); font-weight: 700; font-size: 13px; margin-bottom: 10px; }
+
+  .btn-whatsapp {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 9px;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .btn-whatsapp:hover { background: var(--dark-green); }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .step {
+    background: white;
+    border-radius: var(--radius);
+    padding: 20px 14px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+  }
+
+  .step .num {
+    width: 36px; height: 36px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px;
+    margin: 0 auto 10px;
+  }
+
+  .step h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+  .step p { font-size: 12px; color: var(--muted); }
+
+  /* ── FORMS ── */
+  .form-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+  }
+
+  .form-card h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--dark-green);
+    margin-bottom: 6px;
+  }
+
+  .form-card .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media(max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+  .form-group { margin-bottom: 16px; }
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+
+  label .req { color: var(--orange); }
+
+  input, select, textarea {
+    width: 100%;
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: 'Noto Sans', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+    background: #fafafa;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--green);
+    background: white;
+  }
+
+  textarea { resize: vertical; min-height: 80px; }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  .checkbox-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0f4f0;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    padding: 7px 14px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .checkbox-pill input[type="checkbox"] { display: none; }
+
+  .checkbox-pill.checked {
+    background: var(--light-green);
+    border-color: var(--green);
+    color: var(--dark-green);
+  }
+
+  .btn-submit {
+    background: linear-gradient(135deg, var(--dark-green), var(--green));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Baloo 2', cursive;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 8px;
+  }
+
+  .btn-submit:hover { opacity: 0.92; transform: scale(0.99); }
+
+  /* ── COMMISSION BANNER ── */
+  .commission-banner {
+    background: linear-gradient(135deg, #FF6B2B, #ff9a5c);
+    color: white;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .commission-banner .icon { font-size: 40px; flex-shrink: 0; }
+
+  .commission-banner h3 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .commission-banner p { font-size: 13px; opacity: 0.93; }
+
+  /* ── WORKER LIST ── */
+  .worker-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+
+  .worker-item {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    border-left: 4px solid var(--green);
+  }
+
+  .worker-avatar {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--green), var(--dark-green));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+
+  .worker-info { flex: 1; }
+  .worker-info h4 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+  .worker-info .meta { font-size: 12px; color: var(--muted); }
+  .worker-info .badge {
+    display: inline-block;
+    background: var(--light-green);
+    color: var(--dark-green);
+    border-radius: 50px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-right: 4px;
+  }
+
+  .btn-hire {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .btn-hire:hover { background: var(--dark-green); }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #1a1a1a;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    transition: transform 0.35s cubic-bezier(.34,1.56,.64,1);
+    white-space: nowrap;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+    margin-top: 30px;
+  }
+
+  footer a { color: var(--light-green); text-decoration: none; }
+
+  /* ── SUCCESS STATE ── */
+  .success-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 40px 24px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+
+  .success-card .check { font-size: 64px; margin-bottom: 12px; }
+  .success-card h3 { font-family: 'Baloo 2', cursive; font-size: 22px; color: var(--dark-green); margin-bottom: 8px; }
+  .success-card p { color: var(--muted); font-size: 14px; }
+
+  /* ── ADMIN BADGE ── */
+  .admin-tag {
+    background: var(--orange);
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">Kaam<span>Contact</span> 💬</div>
+    <nav>
+      <button class="active" onclick="showPage('home', this)">🏠 Home</button>
+      <button onclick="showPage('workers', this)">👷 Workers</button>
+      <button onclick="showPage('register', this)">📝 Register</button>
+      <button onclick="showPage('admin', this)">🔐 Admin</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <h2>Khoda Colony Local Services 🔧</h2>
+    <p>Ek tap me ghar baithe experts bulao — WhatsApp pe instantly!</p>
+    <div class="stats">
+      <div class="stat"><strong id="stat-workers">0</strong><span>Registered Workers</span></div>
+      <div class="stat"><strong id="stat-services">4</strong><span>Services</span></div>
+      <div class="stat"><strong>⚡</strong><span>Instant WhatsApp</span></div>
+    </div>
+  </div>
+
+  <p class="section-title">🛠️ Hamare Services</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="icon-wrap">⚡</div>
+      <div class="card-body">
+        <h3>Electrician</h3>
+        <div class="price">₹200 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('Electrician')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">🚿</div>
+      <div class="card-body">
+        <h3>Plumber</h3>
+        <div class="price">₹150 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('Plumber')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">❄️</div>
+      <div class="card-body">
+        <h3>AC Repair</h3>
+        <div class="price">₹300 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('AC Repair')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">🏍️</div>
+      <div class="card-body">
+        <h3>Bike Repair</h3>
+        <div class="price">₹100 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('Bike Repair')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">🎨</div>
+      <div class="card-body">
+        <h3>Painter</h3>
+        <div class="price">₹500 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('Painter')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">🧹</div>
+      <div class="card-body">
+        <h3>Cleaning</h3>
+        <div class="price">₹250 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('House Cleaning')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">🔐</div>
+      <div class="card-body">
+        <h3>Locksmith</h3>
+        <div class="price">₹200 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('Locksmith')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="icon-wrap">📺</div>
+      <div class="card-body">
+        <h3>TV / Appliance Repair</h3>
+        <div class="price">₹200 se shuru</div>
+        <button class="btn-whatsapp" onclick="bookService('TV Repair')">
+          <span>📱</span> WhatsApp pe Book
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-title">📋 Kaise Kaam Karta Hai?</p>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>Service Chunein</h4>
+      <p>Apni zaroorat ka service card tap karen</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>WhatsApp Message</h4>
+      <p>Auto message jayega humari team ko</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>Worker Assign</h4>
+      <p>Nearby available worker bheja jayega</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>Kaam Ho Gaya!</h4>
+      <p>Worker aayega, kaam karega, payment karo</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ WORKERS PAGE ══════════════ -->
+<div class="page" id="page-workers">
+  <div class="form-card" style="padding:20px 24px 16px;">
+    <h2>👷 Available Workers</h2>
+    <p class="subtitle">Registered workers jo aapke area me available hain</p>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+      <select id="filter-service" onchange="filterWorkers()" style="flex:1; min-width:140px;">
+        <option value="">Sab Services</option>
+        <option>Electrician</option>
+        <option>Plumber</option>
+        <option>AC Repair</option>
+        <option>Bike Repair</option>
+        <option>Painter</option>
+        <option>House Cleaning</option>
+        <option>Locksmith</option>
+        <option>TV Repair</option>
+      </select>
+      <select id="filter-area" onchange="filterWorkers()" style="flex:1; min-width:140px;">
+        <option value="">Sab Areas</option>
+        <option>Khoda Colony</option>
+        <option>Sector 62</option>
+        <option>Mayur Vihar</option>
+        <option>Vasundhara</option>
+        <option>Indirapuram</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="worker-list" id="worker-list">
+    <!-- Populated by JS -->
+  </div>
+
+  <div id="no-workers" style="display:none; text-align:center; padding:30px; color:var(--muted);">
+    <div style="font-size:48px; margin-bottom:12px;">😕</div>
+    <p>Is filter ke liye koi worker nahi mila.<br>Register karo ya filter change karo.</p>
+  </div>
+</div>
+
+<!-- ══════════════ REGISTER PAGE ══════════════ -->
+<div class="page" id="page-register">
+  <div class="commission-banner">
+    <div class="icon">💰</div>
+    <div>
+      <h3>Worker Bano, Kaam Pao!</h3>
+      <p>Apni nearby area me kaam milega. Har job pe commission-based earnings. Platform bilkul free hai!</p>
+    </div>
+  </div>
+
+  <div class="form-card" id="register-form-wrap">
+    <h2>📝 Worker Registration</h2>
+    <p class="subtitle">Niche form bharo aur apne area me kaam lena shuru karo</p>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Pura Naam <span class="req">*</span></label>
+        <input type="text" id="w-name" placeholder="Ramesh Kumar" />
+      </div>
+      <div class="form-group">
+        <label>WhatsApp Number <span class="req">*</span></label>
+        <input type="tel" id="w-phone" placeholder="91XXXXXXXXXX" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Umar (Age)</label>
+        <input type="number" id="w-age" placeholder="25" min="18" max="70" />
+      </div>
+      <div class="form-group">
+        <label>Anubhav (Experience) <span class="req">*</span></label>
+        <select id="w-exp">
+          <option value="">Select...</option>
+          <option>1 saal se kam</option>
+          <option>1-3 saal</option>
+          <option>3-5 saal</option>
+          <option>5+ saal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Aapka Area / Location <span class="req">*</span></label>
+      <select id="w-area">
+        <option value="">Area chunein...</option>
+        <option>Khoda Colony</option>
+        <option>Sector 62</option>
+        <option>Mayur Vihar</option>
+        <option>Vasundhara</option>
+        <option>Indirapuram</option>
+        <option>Noida Sector 63</option>
+        <option>Kondli</option>
+        <option>Gazipur</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Full Address <span class="req">*</span></label>
+      <textarea id="w-address" placeholder="Ghar ka address ya mohalla likhein..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Aapki Skills (Services) <span class="req">*</span> — Jitne aate hain sab chunein</label>
+      <div class="checkbox-group" id="skills-group">
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="Electrician"> ⚡ Electrician
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="Plumber"> 🚿 Plumber
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="AC Repair"> ❄️ AC Repair
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="Bike Repair"> 🏍️ Bike Repair
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="Painter"> 🎨 Painter
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="House Cleaning"> 🧹 Cleaning
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="Locksmith"> 🔐 Locksmith
+        </label>
+        <label class="checkbox-pill" onclick="togglePill(this)">
+          <input type="checkbox" value="TV Repair"> 📺 TV Repair
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Koi bhi khaas baat (Optional)</label>
+      <textarea id="w-note" placeholder="Jaise: raat ko bhi available hoon, emergency calls leta hoon..."></textarea>
+    </div>
+
+    <div style="background:#fffbe6; border-radius:10px; padding:14px; margin-bottom:16px; font-size:13px; border-left:4px solid #f59e0b;">
+      💡 <strong>Commission System:</strong> Har completed job pe platform fee hogi jo directly apke earning se kati jayegi. Pura details WhatsApp pe bataye jayenge registration ke baad.
+    </div>
+
+    <button class="btn-submit" onclick="registerWorker()">
+      ✅ Register Karo — Bilkul Free!
+    </button>
+  </div>
+
+  <div class="success-card" id="register-success" style="display:none;">
+    <div class="check">🎉</div>
+    <h3>Registration Ho Gaya!</h3>
+    <p>Aapka registration receive ho gaya hai.<br>Jaldi hi hamari team WhatsApp pe contact karegi.<br><br>
+    <strong>Commission:</strong> Pehle 3 jobs pe 10% fee, baad me 15% fee per job.</p>
+    <button class="btn-whatsapp" style="width:auto; margin:20px auto 0; padding:12px 24px;" onclick="bookService('Worker Registration')">
+      📱 Admin ko WhatsApp karo
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════ ADMIN PAGE ══════════════ -->
+<div class="page" id="page-admin">
+  <div class="form-card" style="margin-bottom:16px;">
+    <h2>🔐 Admin Panel</h2>
+    <p class="subtitle">Workers aur commissions ka overview dekho</p>
+
+    <div id="admin-lock">
+      <div class="form-group">
+        <label>Admin Password</label>
+        <input type="password" id="admin-pass" placeholder="Password daalo..." onkeydown="if(event.key==='Enter')adminLogin()" />
+      </div>
+      <button class="btn-submit" onclick="adminLogin()">Login Karo</button>
+    </div>
+
+    <div id="admin-panel" style="display:none;">
+      <div class="stats" style="justify-content:flex-start; margin:0 0 20px;">
+        <div class="stat" style="background:var(--light-green); color:var(--dark-green);">
+          <strong id="admin-total-workers">0</strong><span>Total Workers</span>
+        </div>
+        <div class="stat" style="background:#fff3cd; color:#856404;">
+          <strong id="admin-total-jobs">0</strong><span>Total Jobs (est.)</span>
+        </div>
+        <div class="stat" style="background:#ffe8d6; color:#7c3500;">
+          <strong id="admin-commission">₹0</strong><span>Commission Earned</span>
+        </div>
+      </div>
+
+      <p style="font-weight:700; margin-bottom:10px;">📋 Registered Workers:</p>
+      <div id="admin-worker-list" class="worker-list"></div>
+
+      <div style="margin-top:20px; padding:14px; background:#f8f8f8; border-radius:10px; font-size:13px; color:var(--muted);">
+        💡 <strong>Commission Logic:</strong> Pehle 3 jobs = 10% per job. 3 jobs ke baad = 15% per job.
+        Average job value ₹300 maan ke estimate hai.
+      </div>
+
+      <button class="btn-submit" style="margin-top:16px; background:linear-gradient(135deg,#dc2626,#ef4444);" onclick="clearAllWorkers()">
+        🗑️ Sab Data Clear Karo
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Done!</div>
+
+<footer>
+  © 2026 kaam contact· Khoda Colony Services ·
+  <a href="https://api.whatsapp.com/send?phone=918920827950" target="_blank">📱 Contact Admin</a>
+</footer>
+
+<script>
+  // ── DATA STORE ──
+  const ADMIN_PHONE = "918920827950";
+  const ADMIN_PASS = "Akash@13"; // Admin can change this
+
+  function getWorkers() {
+    try { return JSON.parse(localStorage.getItem('KaamConnect') || '[]'); } catch { return []; }
+  }
+
+  function saveWorkers(w) {
+    localStorage.setItem('KaamConnect', JSON.stringify(w));
+  }
+
+  // ── PAGE NAV ──
+  function showPage(name, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    if(btn) btn.classList.add('active');
+    if(name === 'workers') renderWorkers();
+    updateStats();
+  }
+
+  // ── TOAST ──
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ── STATS ──
+  function updateStats() {
+    const count = getWorkers().length;
+    const el = document.getElementById('stat-workers');
+    if(el) el.textContent = count;
+  }
+
+  // ── WHATSAPP BOOK ──
+  function bookService(service) {
+    const msg = "Hello! Mujhe " + service + " chahiye Khoda Colony me. Kripya ek worker bhejein. 🙏";
+    window.open("https://api.whatsapp.com/send?phone=" + ADMIN_PHONE + "&text=" + encodeURIComponent(msg), '_blank');
+  }
+
+  // ── PILL TOGGLE ──
+  function togglePill(label) {
+    setTimeout(() => {
+      const cb = label.querySelector('input[type=checkbox]');
+      if(cb.checked) label.classList.add('checked');
+      else label.classList.remove('checked');
+    }, 10);
+  }
+
+  // ── REGISTER WORKER ──
+  function registerWorker() {
+    const name = document.getElementById('w-name').value.trim();
+    const phone = document.getElementById('w-phone').value.trim();
+    const area = document.getElementById('w-area').value;
+    const address = document.getElementById('w-address').value.trim();
+    const exp = document.getElementById('w-exp').value;
+
+    const skills = Array.from(document.querySelectorAll('#skills-group input:checked')).map(i => i.value);
+
+    if(!name || !phone || !area || !address || !exp || skills.length === 0) {
+      showToast('⚠️ Saare zaruri fields bharo!');
+      return;
+    }
+
+    const worker = {
+      id: Date.now(),
+      name, phone, area, address, exp,
+      skills,
+      age: document.getElementById('w-age').value,
+      note: document.getElementById('w-note').value.trim(),
+      jobs: 0,
+      registered: new Date().toLocaleDateString('hi-IN')
+    };
+
+    const workers = getWorkers();
+    workers.push(worker);
+    saveWorkers(workers);
+
+    // Notify admin via WhatsApp
+    const adminMsg = `🆕 Naya Worker Register Hua!\n\nNaam: ${name}\nPhone: ${phone}\nArea: ${area}\nSkills: ${skills.join(', ')}\nExperience: ${exp}\nAddress: ${address}`;
+    setTimeout(() => {
+      window.open("https://api.whatsapp.com/send?phone=" + ADMIN_PHONE + "&text=" + encodeURIComponent(adminMsg), '_blank');
+    }, 300);
+
+    document.getElementById('register-form-wrap').style.display = 'none';
+    document.getElementById('register-success').style.display = 'block';
+    updateStats();
+    showToast('🎉 Registration successful!');
+  }
+
+  // ── RENDER WORKERS ──
+  const serviceEmoji = { Electrician:'⚡', Plumber:'🚿', 'AC Repair':'❄️', 'Bike Repair':'🏍️', Painter:'🎨', 'House Cleaning':'🧹', Locksmith:'🔐', 'TV Repair':'📺' };
+
+  function renderWorkers(filteredList) {
+    const list = filteredList || getWorkers();
+    const el = document.getElementById('worker-list');
+    const noEl = document.getElementById('no-workers');
+    el.innerHTML = '';
+
+    if(list.length === 0) {
+      noEl.style.display = 'block';
+      return;
+    }
+    noEl.style.display = 'none';
+
+    list.forEach(w => {
+      const badges = w.skills.map(s => `<span class="badge">${serviceEmoji[s]||'🔧'} ${s}</span>`).join('');
+      const div = document.createElement('div');
+      div.className = 'worker-item';
+      div.innerHTML = `
+        <div class="worker-avatar">${serviceEmoji[w.skills[0]] || '👷'}</div>
+        <div class="worker-info">
+          <h4>${w.name}</h4>
+          <div class="meta">📍 ${w.area} · 🕐 ${w.exp}</div>
+          <div style="margin-top:6px;">${badges}</div>
+        </div>
+        <button class="btn-hire" onclick="hireWorker('${w.name}', '${w.phone}', '${w.skills[0]}')">
+          📱 Hire
+        </button>
+      `;
+      el.appendChild(div);
+    });
+  }
+
+  function filterWorkers() {
+    const svc = document.getElementById('filter-service').value;
+    const area = document.getElementById('filter-area').value;
+    let workers = getWorkers();
+    if(svc) workers = workers.filter(w => w.skills.includes(svc));
+    if(area) workers = workers.filter(w => w.area === area);
+    renderWorkers(workers);
+  }
+
+  function hireWorker(name, phone, skill) {
+    const msg = `Hello ${name}! Maine KaamConnect pe aapko dekha. Mujhe ${skill} ki zaroorat hai Khoda Colony me. Kya aap available hain? 🙏`;
+    window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(msg), '_blank');
+    // Track job & commission
+    const workers = getWorkers();
+    const w = workers.find(x => x.phone === phone);
+    if(w) { w.jobs = (w.jobs || 0) + 1; saveWorkers(workers); }
+  }
+
+  // ── ADMIN ──
+  function adminLogin() {
+    const pass = document.getElementById('admin-pass').value;
+    if(pass === ADMIN_PASS) {
+      document.getElementById('admin-lock').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'block';
+      renderAdminPanel();
+    } else {
+      showToast('❌ Wrong password!');
+    }
+  }
+
+  function renderAdminPanel() {
+    const workers = getWorkers();
+    document.getElementById('admin-total-workers').textContent = workers.length;
+    const totalJobs = workers.reduce((a, w) => a + (w.jobs || 0), 0);
+    document.getElementById('admin-total-jobs').textContent = totalJobs;
+
+    // Commission calc
+    let commission = 0;
+    workers.forEach(w => {
+      const jobs = w.jobs || 0;
+      const first3 = Math.min(jobs, 3);
+      const rest = Math.max(0, jobs - 3);
+      commission += (first3 * 300 * 0.10) + (rest * 300 * 0.15);
+    });
+    document.getElementById('admin-commission').textContent = '₹' + Math.round(commission);
+
+    const el = document.getElementById('admin-worker-list');
+    el.innerHTML = '';
+    if(workers.length === 0) { el.innerHTML = '<p style="color:var(--muted);text-align:center;padding:20px;">Koi worker registered nahi hai abhi.</p>'; return; }
+
+    workers.forEach(w => {
+      const jobs = w.jobs || 0;
+      const first3 = Math.min(jobs, 3);
+      const rest = Math.max(0, jobs - 3);
+      const earned = Math.round((first3 * 300 * 0.10) + (rest * 300 * 0.15));
+
+      const div = document.createElement('div');
+      div.className = 'worker-item';
+      div.innerHTML = `
+        <div class="worker-avatar">👷</div>
+        <div class="worker-info">
+          <h4>${w.name} <span class="admin-tag">${w.area}</span></h4>
+          <div class="meta">📞 ${w.phone} · 🕐 ${w.exp} · 📅 ${w.registered || '-'}</div>
+          <div class="meta" style="margin-top:4px;">Skills: ${w.skills.join(', ')}</div>
+          <div class="meta" style="margin-top:4px; color:var(--orange); font-weight:700;">Jobs: ${jobs} · Commission: ₹${earned}</div>
+        </div>
+        <button class="btn-hire" onclick="adminContact('${w.phone}', '${w.name}')">📱 Contact</button>
+      `;
+      el.appendChild(div);
+    });
+  }
+
+  function adminContact(phone, name) {
+    const msg = `Hello ${name}! KaamConnect Admin ki taraf se kaam aya hai aapke liye. Please respond karo.`;
+    window.open("https://api.whatsapp.com/send?phone=" + phone + "&text=" + encodeURIComponent(msg), '_blank');
+  }
+
+  function clearAllWorkers() {
+    if(confirm('Sach me sab data delete karna hai?')) {
+      saveWorkers([]);
+      renderAdminPanel();
+      updateStats();
+      showToast('🗑️ Sab data clear ho gaya');
+    }
+  }
+
+  // ── INIT ──
+  updateStats();
+
+  // Demo workers if empty
+  if(getWorkers().length === 0) {
+    saveWorkers([
+      { id: 1, name: "Suresh Kumar", phone: "919876543210", area: "Khoda Colony", address: "Block A, Gali 3", exp: "3-5 saal", skills: ["Electrician", "AC Repair"], age: 32, note: "Emergency pe bhi available", jobs: 5, registered: "01/04/2026" },
+      { id: 2, name: "Mohan Das", phone: "919988776655", area: "Khoda Colony", address: "Main Market ke paas", exp: "5+ saal", skills: ["Plumber"], age: 40, note: "", jobs: 2, registered: "02/04/2026" },
+      { id: 3, name: "Ravi Sharma", phone: "919123456789", area: "Sector 62", address: "Sector 62, Near Park", exp: "1-3 saal", skills: ["Bike Repair", "TV Repair"], age: 28, note: "Sunday bhi aata hoon", jobs: 1, registered: "03/04/2026" }
+    ]);
+    updateStats();
+  }
+</script>
+</body>
+</html>
